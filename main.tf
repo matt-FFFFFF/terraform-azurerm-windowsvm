@@ -1,8 +1,3 @@
-resource "random_string" "password" {
-  length  = 16
-  special = false
-}
-
 data "azurerm_resource_group" "rg" {
   name = "${var.resource_group_name}"
 }
@@ -77,7 +72,7 @@ resource "azurerm_network_interface" "vm" {
 
 resource "azurerm_virtual_machine_extension" "vmextension" {
   count                      = "${var.number_of_instances}"
-  name                       = "${random_string.password.result}"
+  name                       = "AzureDiskEncryption"
   location                   = "${data.azurerm_resource_group.rg.location}"
   resource_group_name        = "${data.azurerm_resource_group.rg.name}"
   virtual_machine_name       = "${element(azurerm_virtual_machine.vm.*.name, count.index)}"
