@@ -1,34 +1,34 @@
-variable name_prefix {
+variable "name_prefix" {
   description = "Prefix of the VM name"
   default     = "windows"
 }
 
-variable os_sku {
+variable "os_sku" {
   description = "Sku of Windows VM"
   default     = "2019-Datacenter"
 }
 
-variable admin_password {
+variable "admin_password" {
   description = "Admin password for VM"
-  default = ""
+  default     = ""
 }
 
-variable admin_username {
+variable "admin_username" {
   description = "Admin password for VM"
-  default = ""
+  default     = ""
 }
 
-variable timezone {
+variable "timezone" {
   description = "Timezone of the Windows VM"
-  default = "GMT Standard Time"
+  default     = "GMT Standard Time"
 }
 
-variable vm_sku {
-  default = "VM size"
+variable "vm_sku" {
+  description = "VM size"
   default = "Standard_B2ms"
 }
 
-variable number_of_instances {
+variable "number_of_instances" {
   description = "How many instances are requried"
   default     = 1
 }
@@ -58,22 +58,22 @@ variable "virtual_network_resource_group_name" {
   default     = "rg123"
 }
 
-variable key_vault_name {
+variable "key_vault_name" {
   description = "Name of the keyVault"
   default     = "kv123"
 }
 
-variable key_vault_resource_group_name {
+variable "key_vault_resource_group_name" {
   description = "Resource group of the keyVault"
   default     = "rg123"
 }
 
-variable key_encryption_key_url {
+variable "key_encryption_key_url" {
   description = "URL to key encryption key - only requried if using KEK"
   default     = ""
 }
 
-variable encryption_algorithm {
+variable "encryption_algorithm" {
   description = " Algo for encryption"
   default     = "RSA-OAEP"
 }
@@ -93,7 +93,9 @@ variable "type_handler_version" {
 
 variable "tags" {
   description = "The tags to associate with your resources"
-  type        = "map"
+  type        = map(string)
 
-  default = {}
+  default = {
+  }
 }
+
